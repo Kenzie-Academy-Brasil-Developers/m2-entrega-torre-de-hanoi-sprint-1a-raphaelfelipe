@@ -1,27 +1,86 @@
-const torres = document.getElementById('torres');
-//torres
-const torreStart = document.createElement('div');
-const torreOffset = document.createElement('div');
-const torreEnd = document.createElement('div');
+//-----FAZENDO LAYOUT-----
 
-torreStart.setAttribute("id", "torreStart");
-torreOffset.setAttribute("id", "torreOffset");
-torreEnd.setAttribute("id", "torreEnd");
 
-torres.appendChild(torreStart);
-torres.appendChild(torreOffset);
-torres.appendChild(torreEnd);
+function criandoTorres() {
+    const torres = document.getElementById('torres');
+    const torreStart = document.createElement('div');
+    const torreOffset = document.createElement('div');
+    const torreEnd = document.createElement('div');
 
-const disco1 = document.createElement('div')
-disco1.setAttribute('id', 'disco1')
-torreStart.appendChild(disco1)
-const disco2 = document.createElement('div')
-disco2.setAttribute('id', 'disco2')
-torreStart.appendChild(disco2)
-const disco3 = document.createElement('div')
-disco3.setAttribute('id', 'disco3')
-<<<<<<< HEAD:hanoi.js
-torreStart.appendChild(disco3)
-=======
-torreStart.appendChild(disco3)
->>>>>>> origin/estilizando-css:assets/JS/hanoi.js
+    torreStart.setAttribute("id", "torreStart");
+    torreOffset.setAttribute("id", "torreOffset");
+    torreEnd.setAttribute("id", "torreEnd");
+
+    torreStart.setAttribute("class", "torres");
+    torreOffset.setAttribute("class", "torres");
+    torreEnd.setAttribute("class", "torres");
+
+
+    torres.appendChild(torreStart);
+    torres.appendChild(torreOffset);
+    torres.appendChild(torreEnd);
+}
+
+function criandoDiscos() {
+    const disco1 = document.createElement('div');
+    disco1.setAttribute('id', 'disco1');
+    torreStart.appendChild(disco1);
+    const disco2 = document.createElement('div');
+    disco2.setAttribute('id', 'disco2');
+    torreStart.appendChild(disco2);
+    const disco3 = document.createElement('div');
+    disco3.setAttribute('id', 'disco3');
+    torreStart.appendChild(disco3);
+}
+
+criandoTorres()
+criandoDiscos()
+
+
+//----MOVIMENTAÇÃO-------
+
+
+
+// constantes para movimentar disco
+
+
+let discoSelecionado = null
+const listaTorres = document.querySelectorAll('.torres')
+console.log(listaTorres)
+
+//evento clique para movimenta disco
+
+
+
+//funções para movimenta disco
+
+
+function jogando(torreClicada) {
+    if (torreClicada.target.className == 'torres') {
+        if (discoSelecionado == null) {
+            discoSelecionado = torreClicada.target.lastChild
+        } else {
+            console.log(torreClicada.target)
+            movimentandoDisco(torreClicada.target, discoSelecionado)
+            discoSelecionado = null
+        }
+        console.log(discoSelecionado)
+    } else {
+        if (discoSelecionado == null) {
+            discoSelecionado = torreClicada.target.parentElement.lastChild
+        } else {
+            console.log(torreClicada.target)
+            movimentandoDisco(torreClicada.target, discoSelecionado)
+            discoSelecionado = null
+        }
+        console.log(discoSelecionado)
+    }
+}
+
+function movimentandoDisco(torreDestino, discoMovimentado) {
+    torreDestino.appendChild(discoMovimentado)
+}
+
+listaTorres.forEach(function(evt) {
+    evt.addEventListener('click', jogando)
+})
