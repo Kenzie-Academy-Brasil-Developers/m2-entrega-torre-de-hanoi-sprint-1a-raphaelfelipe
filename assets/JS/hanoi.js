@@ -63,8 +63,10 @@ function jogando(torreClicada) {
     if (torreClicada.target.className == 'torres') {
         if (discoSelecionado == null) {
             discoSelecionado = torreClicada.target.lastChild;
+            discoSelecionado.className += " discoSelecionado"
         } else if(torreClicada.target.childElementCount == 0 || torreClicada.target.lastChild.id <= discoSelecionado.id){
             movimentandoDisco(torreClicada.target, discoSelecionado);
+            discoSelecionado.classList.remove("discoSelecionado")
             discoSelecionado = null;
         } else{
             //chamar função perdeu
@@ -72,8 +74,10 @@ function jogando(torreClicada) {
     } else {
         if (discoSelecionado == null) {
             discoSelecionado = torreClicada.target.parentElement.lastChild;
+            discoSelecionado.className += " discoSelecionado"
         } else if(torreClicada.target.parentElement.lastChild.id <= discoSelecionado.id){
             movimentandoDisco(torreClicada.target.parentElement, discoSelecionado);
+            discoSelecionado.classList.remove("discoSelecionado")
             discoSelecionado = null;
         }
     }
