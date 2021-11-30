@@ -20,4 +20,8 @@ disco2.setAttribute('id', 'disco2')
 torreStart.appendChild(disco2)
 const disco3 = document.createElement('div')
 disco3.setAttribute('id', 'disco3')
+<<<<<<< HEAD:hanoi.js
 torreStart.appendChild(disco3)
+=======
+torreStart.appendChild(disco3)
+>>>>>>> origin/estilizando-css:assets/JS/hanoi.js
