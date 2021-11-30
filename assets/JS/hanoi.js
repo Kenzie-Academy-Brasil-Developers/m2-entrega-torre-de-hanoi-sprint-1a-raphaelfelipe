@@ -33,8 +33,8 @@ function criandoDiscos() {
     torreStart.appendChild(disco3);
 }
 
-criandoTorres()
-criandoDiscos()
+criandoTorres();
+criandoDiscos();
 
 
 //----MOVIMENTAÇÃO-------
@@ -44,13 +44,15 @@ criandoDiscos()
 // constantes para movimentar disco
 
 
-let discoSelecionado = null
-const listaTorres = document.querySelectorAll('.torres')
-console.log(listaTorres)
+let discoSelecionado = null;
+const listaTorres = document.querySelectorAll('.torres');
+console.log(listaTorres);
 
 //evento clique para movimenta disco
 
-
+listaTorres.forEach(function(evt) {
+    evt.addEventListener('click', jogando);
+})
 
 //funções para movimenta disco
 
@@ -58,29 +60,25 @@ console.log(listaTorres)
 function jogando(torreClicada) {
     if (torreClicada.target.className == 'torres') {
         if (discoSelecionado == null) {
-            discoSelecionado = torreClicada.target.lastChild
+            discoSelecionado = torreClicada.target.lastChild;
         } else {
             console.log(torreClicada.target)
-            movimentandoDisco(torreClicada.target, discoSelecionado)
-            discoSelecionado = null
+            movimentandoDisco(torreClicada.target, discoSelecionado);
+            discoSelecionado = null;
         }
-        console.log(discoSelecionado)
+        console.log(discoSelecionado);
     } else {
         if (discoSelecionado == null) {
-            discoSelecionado = torreClicada.target.parentElement.lastChild
+            discoSelecionado = torreClicada.target.parentElement.lastChild;
         } else {
-            console.log(torreClicada.target)
-            movimentandoDisco(torreClicada.target, discoSelecionado)
-            discoSelecionado = null
+            console.log(torreClicada.target);
+            movimentandoDisco(torreClicada.target, discoSelecionado);
+            discoSelecionado = null;
         }
-        console.log(discoSelecionado)
+        console.log(discoSelecionado);
     }
 }
 
 function movimentandoDisco(torreDestino, discoMovimentado) {
-    torreDestino.appendChild(discoMovimentado)
+    torreDestino.appendChild(discoMovimentado);
 }
-
-listaTorres.forEach(function(evt) {
-    evt.addEventListener('click', jogando)
-})
