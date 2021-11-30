@@ -23,13 +23,16 @@ function criandoTorres() {
 
 function criandoDiscos() {
     const disco1 = document.createElement('div');
-    disco1.setAttribute('id', 'disco1');
+    disco1.setAttribute('class', 'disco1');
+    disco1.setAttribute('id', '1');
     torreStart.appendChild(disco1);
     const disco2 = document.createElement('div');
-    disco2.setAttribute('id', 'disco2');
+    disco2.setAttribute('class', 'disco2');
+    disco2.setAttribute('id', '2');
     torreStart.appendChild(disco2);
     const disco3 = document.createElement('div');
-    disco3.setAttribute('id', 'disco3');
+    disco3.setAttribute('class', 'disco3');
+    disco3.setAttribute('id', '3');
     torreStart.appendChild(disco3);
 }
 
@@ -60,15 +63,21 @@ function jogando(torreClicada) {
     if (torreClicada.target.className == 'torres') {
         if (discoSelecionado == null) {
             discoSelecionado = torreClicada.target.lastChild;
-        } else {
+            discoSelecionado.className += " discoSelecionado"
+        } else if(torreClicada.target.childElementCount == 0 || torreClicada.target.lastChild.id <= discoSelecionado.id){
             movimentandoDisco(torreClicada.target, discoSelecionado);
+            discoSelecionado.classList.remove("discoSelecionado")
             discoSelecionado = null;
+        } else{
+            //chamar função perdeu
         }
     } else {
         if (discoSelecionado == null) {
             discoSelecionado = torreClicada.target.parentElement.lastChild;
-        } else {
+            discoSelecionado.className += " discoSelecionado"
+        } else if(torreClicada.target.parentElement.lastChild.id <= discoSelecionado.id){
             movimentandoDisco(torreClicada.target.parentElement, discoSelecionado);
+            discoSelecionado.classList.remove("discoSelecionado")
             discoSelecionado = null;
         }
     }
@@ -76,4 +85,8 @@ function jogando(torreClicada) {
 
 function movimentandoDisco(torreDestino, discoMovimentado) {
     torreDestino.appendChild(discoMovimentado);
+}
+
+function regras(){
+    
 }
