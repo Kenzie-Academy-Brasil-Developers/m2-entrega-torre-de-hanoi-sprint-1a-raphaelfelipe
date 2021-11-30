@@ -46,7 +46,6 @@ criandoDiscos();
 
 let discoSelecionado = null;
 const listaTorres = document.querySelectorAll('.torres');
-console.log(listaTorres);
 
 //evento clique para movimenta disco
 
@@ -62,20 +61,16 @@ function jogando(torreClicada) {
         if (discoSelecionado == null) {
             discoSelecionado = torreClicada.target.lastChild;
         } else {
-            console.log(torreClicada.target)
             movimentandoDisco(torreClicada.target, discoSelecionado);
             discoSelecionado = null;
         }
-        console.log(discoSelecionado);
     } else {
         if (discoSelecionado == null) {
             discoSelecionado = torreClicada.target.parentElement.lastChild;
         } else {
-            console.log(torreClicada.target);
-            movimentandoDisco(torreClicada.target, discoSelecionado);
+            movimentandoDisco(torreClicada.target.parentElement, discoSelecionado);
             discoSelecionado = null;
         }
-        console.log(discoSelecionado);
     }
 }
 
