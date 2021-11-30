@@ -11,19 +11,19 @@ header{
     display: flex; 
     justify-content: space-around;
 }
-#disco1{
+.disco1{
     width: 90px;
     height: 20px;
     border-radius: 10px;
     background-color: black;
 }
-#disco2{
+.disco2{
     width: 70px;
     height: 20px;
     border-radius: 10px;
     background-color: green;
 }
-#disco3{
+.disco3{
     width: 50px;
     height: 20px;
     border-radius: 10px;
