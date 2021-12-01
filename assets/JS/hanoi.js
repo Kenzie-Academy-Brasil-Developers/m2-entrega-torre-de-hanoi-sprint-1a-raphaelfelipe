@@ -50,8 +50,8 @@ criandoDiscos();
 
 //----MOVIMENTAÇÃO-------
 
-let contadoDeMovimentos = 0
-const numeroDeMovimento = document.getElementById('numeroDeMovimentos')
+let contadoDeMovimentos = 0;
+const numeroDeMovimento = document.getElementById('numeroDeMovimentos');
 numeroDeMovimento.innerText = `${contadoDeMovimentos}`;
 
 // constantes para movimentar disco
@@ -62,8 +62,8 @@ const listaTorres = document.querySelectorAll('.torres');
 
 //evento clique para movimenta disco
 
-listaTorres.forEach(function(evt) {
-    evt.addEventListener('click', jogando);
+listaTorres.forEach(function(torre) {
+    torre.addEventListener('click', jogando);
 })
 
 //funções para movimenta disco
@@ -114,12 +114,62 @@ function movimentos() {
     numeroDeMovimento.innerText = `${contadoDeMovimentos}`;
 }
 
+
+//--------SELECIONAR DIFICULDADE--------
+
+
+let discosTotais = 0;
+
+const listaBotaoDificuldade = document.querySelectorAll('.botaoDificuldade');
+
+listaBotaoDificuldade.forEach(function(botao) {
+    botao.addEventListener('click', selecaoDificuldade);
+})
+
+function selecaoDificuldade(botao) {
+    if (botao.target.id == 'botaoFacil') {
+        dificuldadeFacil();
+    }
+    if (botao.target.id == 'botaoMedio') {
+        dificuldadeMedio();
+    }
+    if (botao.target.id == 'botaoDificil') {
+        dificuldadeDificil();
+    }
+}
+
+
+function dificuldadeFacil() {
+    for (let i = 5; i >= 3; i--) {
+        document.getElementById(`${i}`).style.display = 'inherit';
+    }
+    document.getElementById('boxBannerDificuldade').style.display = 'none';
+    discosTotais = 3;
+}
+
+function dificuldadeMedio() {
+    for (let i = 5; i >= 2; i--) {
+        document.getElementById(`${i}`).style.display = 'inherit';
+    }
+    document.getElementById('boxBannerDificuldade').style.display = 'none';
+    discosTotais = 4;
+}
+
+function dificuldadeDificil() {
+    for (let i = 5; i >= 2; i--) {
+        document.getElementById(`${i}`).style.display = 'inherit';
+    }
+    document.getElementById('boxBannerDificuldade').style.display = 'none';
+    discosTotais = 5;
+}
+
 //--------VITORIA-------
 
 const torreFinal = document.getElementById('torreEnd');
 
+
 function vitoria() {
-    if (torreFinal.childElementCount == 3) {
+    if (torreFinal.childElementCount == discosTotais) {
         BannerVitoria();
     }
     return;
@@ -140,10 +190,12 @@ const botaoReset = document.getElementById('reset');
 botaoReset.addEventListener('click', recomecar);
 
 function recomecar() {
-    document.getElementById('torreStart').appendChild(document.getElementById('1'));
-    document.getElementById('torreStart').appendChild(document.getElementById('2'));
-    document.getElementById('torreStart').appendChild(document.getElementById('3'));
+    for (let i = 1; i <= 5; i++) {
+        document.getElementById(`${i}`).style.display = 'none';
+        document.getElementById('torreStart').appendChild(document.getElementById(`${i}`));
+    }
     contadoDeMovimentos = 0;
     document.getElementById('boxBanner').style.display = 'none';
     numeroDeMovimento.innerText = `${contadoDeMovimentos}`;
+    document.getElementById('boxBannerDificuldade').style.display = 'flex';
 }

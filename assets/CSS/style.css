@@ -101,38 +101,43 @@ header {
 }
 
 .disco1 {
-    width: 110px;
+    width: 100px;
     height: 20px;
     border-radius: 10px;
     background-color: blue;
+    display: none;
 }
 
 .disco2 {
-    width: 95px;
+    width: 85px;
     height: 20px;
     border-radius: 10px;
     background-color: red;
+    display: none;
 }
 
 .disco3 {
-    width: 80px;
+    width: 70px;
     height: 20px;
     border-radius: 10px;
     background-color: black;
+    display: none;
 }
 
 .disco4 {
-    width: 65px;
+    width: 55px;
     height: 20px;
     border-radius: 10px;
     background-color: green;
+    display: none;
 }
 
 .disco5 {
-    width: 50px;
+    width: 40px;
     height: 20px;
     border-radius: 10px;
     background-color: indigo;
+    display: none;
 }
 
 #torreStart {
@@ -177,10 +182,10 @@ header {
 #boxBanner {
     background-color: rgba(0, 0, 0, .3);
     position: fixed;
-    top: 10%;
+    top: 0;
     left: 0;
     width: 100vw;
-    height: 50vh;
+    height: 100vh;
     display: none;
     align-items: center;
 }
@@ -200,19 +205,20 @@ header {
 #boxBannerDificuldade {
     background-color: rgba(0, 0, 0, .3);
     position: fixed;
-    top: 10%;
+    top: 0;
     left: 0;
     width: 100vw;
-    height: 50vh;
-    display: none;
-    align-items: center;
+    height: 100vh;
+    display: flex;
 }
 
 #bannerDificuldade {
     background-color: white;
     width: 10%;
     min-width: 100px;
-    height: 20%;
+    height: 100px;
+    position: relative;
+    top: 10%;
     margin: 0 auto;
     display: flex;
     justify-content: center;
