@@ -159,7 +159,7 @@ function dificuldadeMedio() {
 }
 
 function dificuldadeDificil() {
-    for (let i = 5; i >= 2; i--) {
+    for (let i = 5; i >= 1; i--) {
         document.getElementById(`${i}`).style.display = 'inherit';
     }
     document.getElementById('boxBannerDificuldade').style.display = 'none';
