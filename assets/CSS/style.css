@@ -1,98 +1,25 @@
-html,
-body,
-div,
-span,
-applet,
-object,
-iframe,
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-p,
-blockquote,
-pre,
-a,
-abbr,
-acronym,
-address,
-big,
-cite,
-code,
-del,
-dfn,
-em,
-img,
-ins,
-kbd,
-q,
-s,
-samp,
-small,
-strike,
-strong,
-sub,
-sup,
-tt,
-var,
-b,
-u,
-i,
-center,
-dl,
-dt,
-dd,
-ol,
-ul,
-li,
-fieldset,
-form,
-label,
-legend,
-table,
-caption,
-tbody,
-tfoot,
-thead,
-tr,
-th,
-td,
-article,
-aside,
-canvas,
-details,
-embed,
-figure,
-figcaption,
-footer,
-header,
-hgroup,
-menu,
-nav,
-output,
-ruby,
-section,
-summary,
-time,
-mark,
-audio,
-video {
-    margin: 0;
-    padding: 0;
-    border: 0;
-    font-size: 100%;
-    font: inherit;
-    vertical-align: baseline;
-}
+@import url('https://fonts.googleapis.com/css2?family=Inter&display=swap');
 
-body {}
+body {
+    font-family: 'Inter', sans-serif;
+    background: rgb(238,174,202);
+    background: radial-gradient(circle, rgba(238,174,202,1) 0%, rgba(148,187,233,1) 100%);
+}
 
 header {
     display: flex;
     justify-content: center;
     margin-bottom: 50px;
+    font-weight: bolder;
+    font-size: 25px;
+    margin-top: 15px;
+}
+
+#principal{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 70vh;
 }
 
 #torres {
@@ -108,12 +35,20 @@ header {
     display: none;
 }
 
+.disco1:hover{
+    cursor: pointer;
+}
+
 .disco2 {
     width: 85px;
     height: 20px;
     border-radius: 10px;
     background-color: red;
     display: none;
+}
+
+.disco2:hover{
+    cursor: pointer;
 }
 
 .disco3 {
@@ -124,12 +59,20 @@ header {
     display: none;
 }
 
+.disco3:hover{
+    cursor: pointer;
+}
+
 .disco4 {
     width: 55px;
     height: 20px;
     border-radius: 10px;
     background-color: green;
     display: none;
+}
+
+.disco4:hover{
+    cursor: pointer;
 }
 
 .disco5 {
@@ -140,13 +83,17 @@ header {
     display: none;
 }
 
+.disco5, #torreStart, #torreOffset, #torreEnd:hover{
+    cursor: pointer;
+}
+
 #torreStart {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    width: 110px;
-    height: 100px;
-    background-color: aqua;
+    width: 10px;
+    height: 120px;
+    background-color: black;
 }
 
 #torreOffset {
@@ -154,22 +101,28 @@ header {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    width: 110px;
-    height: 100px;
-    background-color: aqua;
+    width: 10px;
+    height: 120px;
+    background-color: black;
 }
 
 #torreEnd {
     display: flex;
     flex-direction: column-reverse;
     align-items: center;
-    width: 110px;
-    height: 100px;
-    background-color: aqua;
+    width: 10px;
+    height: 120px;
+    background-color: black;
 }
 
 .discoSelecionado {
     margin-bottom: 10px;
+}
+button{
+    border-radius: 3px;
+}
+button:hover{
+    cursor: pointer;
 }
 
 #boxMovimentos {
@@ -177,8 +130,16 @@ header {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    margin-top: 30px;
+    border: 2px solid black;
+    width: min-content;
+    align-self: center;
+    border-radius: 4px;
 }
-
+#boxMovimentos h2{
+    border-bottom: 1px solid;
+    padding: 3px 3px 0;
+}
 #boxBanner {
     background-color: rgba(0, 0, 0, .3);
     position: fixed;
@@ -191,15 +152,38 @@ header {
 }
 
 #banner {
-    background-color: white;
+    background: #DCE35B;
+    background: -webkit-linear-gradient(to right, #45B649, #DCE35B);
+    background: linear-gradient(to right, #45B649, #DCE35B);    
     width: 50%;
     min-width: 300px;
     height: 80%;
     margin: 0 auto;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     flex-direction: column;
     align-items: center;
+    border-radius: 10px;
+}
+
+#banner h2{
+    font-weight: bolder;
+    font-size: 30px;
+    color: hsl(208, 100%, 50%);
+}
+
+#banner p{
+    font-size: 20px;
+    color: #ffffff;
+}
+
+#banner button{
+    background-color: aquamarine;
+    font-size: 20px;
+    border: 1px solid black;
+    height: 50px;
+    width: 160px;
+    border-radius: 5px;
 }
 
 #boxBannerDificuldade {
@@ -213,7 +197,9 @@ header {
 }
 
 #bannerDificuldade {
-    background-color: white;
+    background: #E0EAFC;
+    background: -webkit-linear-gradient(to right, #CFDEF3, #E0EAFC);
+    background: linear-gradient(to right, #CFDEF3, #E0EAFC);
     width: 10%;
     min-width: 100px;
     height: 100px;
@@ -224,4 +210,78 @@ header {
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    border-radius: 10px;
+}
+
+#bannerDificuldade button{
+    margin-bottom: 5px;
+    font-weight: bolder;
+    font-size: 16px;
+}
+
+#botaoFacil {
+    background-color: hsl(263, 100%, 70%);
+    border: 1px solid black;
+    color: #ffffff;
+}
+
+#botaoMedio {    
+    background-color: hsl(240, 100%, 50%);
+    border: 1px solid black;
+    color: #ffffff;
+}
+
+#botaoDificil {
+    background-color: hsl(0, 100%, 50%);
+    border: 1px solid black;
+    color: #ffffff;
+}
+
+
+@media (min-width:768px){
+    .disco1{
+        width: 120px;
+        height: 25px;
+    }
+
+    .disco2{
+        width: 105px;
+        height: 25px;
+    }
+
+    .disco3{
+        width: 90px;
+        height: 25px;
+    }
+
+    .disco4{
+        width: 75px;
+        height: 25px;
+    }
+    .disco5{
+        width: 60px;
+        height: 25px;
+    }
+
+    #torreStart {
+        width: 15px;
+        height: 135px;
+    }
+    #torreOffset{
+        width: 15px;
+        height: 135px;
+    }
+
+    #torreEnd{
+        width: 15px;
+        height: 135px;  
+    }
+
+    #boxMovimentos h2, #boxMovimentos p {
+        font-size: 20px;
+    }
+    h1{
+        margin-top: 20px ;
+        font-size: 50px;
+    }
 }
