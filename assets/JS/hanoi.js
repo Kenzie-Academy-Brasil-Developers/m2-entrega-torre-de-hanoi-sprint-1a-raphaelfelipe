@@ -34,6 +34,14 @@ function criandoDiscos() {
     disco3.setAttribute('class', 'disco3');
     disco3.setAttribute('id', '3');
     torreStart.appendChild(disco3);
+    const disco4 = document.createElement('div');
+    disco4.setAttribute('class', 'disco4');
+    disco4.setAttribute('id', '4');
+    torreStart.appendChild(disco4);
+    const disco5 = document.createElement('div');
+    disco5.setAttribute('class', 'disco5');
+    disco5.setAttribute('id', '5');
+    torreStart.appendChild(disco5);
 }
 
 criandoTorres();
@@ -44,7 +52,7 @@ criandoDiscos();
 
 let contadoDeMovimentos = 0
 const numeroDeMovimento = document.getElementById('numeroDeMovimentos')
-numeroDeMovimento.innerText = `${contadoDeMovimentos}`
+numeroDeMovimento.innerText = `${contadoDeMovimentos}`;
 
 // constantes para movimentar disco
 
@@ -63,9 +71,9 @@ listaTorres.forEach(function(evt) {
 
 function jogando(itemClicado) {
     if (itemClicado.target.className == 'torres') {
-        clicandoNaTorre(itemClicado.target)
+        clicandoNaTorre(itemClicado.target);
     } else {
-        clicandoNoDisco(itemClicado.target)
+        clicandoNoDisco(itemClicado.target);
     }
 }
 
@@ -76,66 +84,66 @@ function movimentandoDisco(torreDestino, discoMovimentado) {
 function clicandoNaTorre(torreClicada) {
     if (discoSelecionado == null) {
         discoSelecionado = torreClicada.lastChild;
-        discoSelecionado.className += " discoSelecionado"
+        discoSelecionado.className += " discoSelecionado";
     } else if (torreClicada.childElementCount == 0 || torreClicada.lastChild.id <= discoSelecionado.id) {
         movimentandoDisco(torreClicada, discoSelecionado);
-        discoSelecionado.classList.remove("discoSelecionado")
+        discoSelecionado.classList.remove("discoSelecionado");
         discoSelecionado = null;
-        movimentos()
-        vitoria()
+        movimentos();
+        vitoria();
     }
-    return
+    return;
 }
 
 function clicandoNoDisco(discoClicado) {
     if (discoSelecionado == null) {
         discoSelecionado = discoClicado.parentElement.lastChild;
-        discoSelecionado.className += " discoSelecionado"
+        discoSelecionado.className += " discoSelecionado";
     } else if (discoClicado.parentElement.lastChild.id <= discoSelecionado.id) {
         movimentandoDisco(discoClicado.parentElement, discoSelecionado);
-        discoSelecionado.classList.remove("discoSelecionado")
+        discoSelecionado.classList.remove("discoSelecionado");
         discoSelecionado = null;
-        movimentos()
-        vitoria()
+        movimentos();
+        vitoria();
     }
-    return
+    return;
 }
 
 function movimentos() {
-    contadoDeMovimentos++
-    numeroDeMovimento.innerText = `${contadoDeMovimentos}`
+    contadoDeMovimentos++;
+    numeroDeMovimento.innerText = `${contadoDeMovimentos}`;
 }
 
 //--------VITORIA-------
 
-const torreFinal = document.getElementById('torreEnd')
+const torreFinal = document.getElementById('torreEnd');
 
 function vitoria() {
     if (torreFinal.childElementCount == 3) {
-        BannerVitoria()
+        BannerVitoria();
     }
-    return
+    return;
 }
 
 function BannerVitoria() {
-    const banner = document.getElementById('boxBanner')
-    banner.style.display = 'flex'
-    const movimentosBanner = document.getElementById('bannerMovimentos')
-    movimentosBanner.innerText = `Numero de movimentos: ${contadoDeMovimentos}`
+    const banner = document.getElementById('boxBanner');
+    banner.style.display = 'flex';
+    const movimentosBanner = document.getElementById('bannerMovimentos');
+    movimentosBanner.innerText = `Numero de movimentos: ${contadoDeMovimentos}`;
 }
 
 
 //------RECOMEÇAR---------
 
-const botaoReset = document.getElementById('reset')
+const botaoReset = document.getElementById('reset');
 
-botaoReset.addEventListener('click', recomecar)
+botaoReset.addEventListener('click', recomecar);
 
 function recomecar() {
-    document.getElementById('torreStart').appendChild(document.getElementById('1'))
-    document.getElementById('torreStart').appendChild(document.getElementById('2'))
-    document.getElementById('torreStart').appendChild(document.getElementById('3'))
-    contadoDeMovimentos = 0
-    document.getElementById('boxBanner').style.display = 'none'
-    numeroDeMovimento.innerText = `${contadoDeMovimentos}`
+    document.getElementById('torreStart').appendChild(document.getElementById('1'));
+    document.getElementById('torreStart').appendChild(document.getElementById('2'));
+    document.getElementById('torreStart').appendChild(document.getElementById('3'));
+    contadoDeMovimentos = 0;
+    document.getElementById('boxBanner').style.display = 'none';
+    numeroDeMovimento.innerText = `${contadoDeMovimentos}`;
 }
