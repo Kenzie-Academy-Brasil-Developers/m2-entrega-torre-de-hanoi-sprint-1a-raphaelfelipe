@@ -82,7 +82,9 @@ function clicandoNaTorre(torreClicada) {
         discoSelecionado.classList.remove("discoSelecionado")
         discoSelecionado = null;
         movimentos()
+        vitoria()
     }
+    return
 }
 
 function clicandoNoDisco(discoClicado) {
@@ -94,10 +96,30 @@ function clicandoNoDisco(discoClicado) {
         discoSelecionado.classList.remove("discoSelecionado")
         discoSelecionado = null;
         movimentos()
+        vitoria()
     }
+    return
 }
 
 function movimentos() {
     contadoDeMovimentos++
     numeroDeMovimento.innerText = `${contadoDeMovimentos}`
+}
+
+//--------VITORIA-------
+
+const torreFinal = document.getElementById('torreEnd')
+
+function vitoria() {
+    if (torreFinal.childElementCount == 3) {
+        BannerVitoria()
+    }
+    return
+}
+
+function BannerVitoria() {
+    const banner = document.getElementById('boxBanner')
+    banner.style.display = 'flex'
+    const movimentosBanner = document.getElementById('bannerMovimentos')
+    movimentosBanner.innerText = `Numero de movimentos: ${contadoDeMovimentos}`
 }
