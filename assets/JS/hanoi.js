@@ -119,6 +119,7 @@ function movimentos() {
 
 
 let discosTotais = 0;
+let dificuldadeSelecionada = ''
 
 const listaBotaoDificuldade = document.querySelectorAll('.botaoDificuldade');
 
@@ -145,6 +146,7 @@ function dificuldadeFacil() {
     }
     document.getElementById('boxBannerDificuldade').style.display = 'none';
     discosTotais = 3;
+    dificuldadeSelecionada = 'Fácil';
 }
 
 function dificuldadeMedio() {
@@ -153,6 +155,7 @@ function dificuldadeMedio() {
     }
     document.getElementById('boxBannerDificuldade').style.display = 'none';
     discosTotais = 4;
+    dificuldadeSelecionada = 'Médio';
 }
 
 function dificuldadeDificil() {
@@ -161,6 +164,7 @@ function dificuldadeDificil() {
     }
     document.getElementById('boxBannerDificuldade').style.display = 'none';
     discosTotais = 5;
+    dificuldadeSelecionada = 'Difícil';
 }
 
 //--------VITORIA-------
@@ -180,6 +184,8 @@ function BannerVitoria() {
     banner.style.display = 'flex';
     const movimentosBanner = document.getElementById('bannerMovimentos');
     movimentosBanner.innerText = `Numero de movimentos: ${contadoDeMovimentos}`;
+    const vitoriaDificuldade = document.getElementById('vitoriaDificuldade')
+    vitoriaDificuldade.innerText = `Dificuldade: ${dificuldadeSelecionada}`;
 }
 
 
