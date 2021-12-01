@@ -123,3 +123,19 @@ function BannerVitoria() {
     const movimentosBanner = document.getElementById('bannerMovimentos')
     movimentosBanner.innerText = `Numero de movimentos: ${contadoDeMovimentos}`
 }
+
+
+//------RECOMEÇAR---------
+
+const botaoReset = document.getElementById('reset')
+
+botaoReset.addEventListener('click', recomecar)
+
+function recomecar() {
+    document.getElementById('torreStart').appendChild(document.getElementById('1'))
+    document.getElementById('torreStart').appendChild(document.getElementById('2'))
+    document.getElementById('torreStart').appendChild(document.getElementById('3'))
+    contadoDeMovimentos = 0
+    document.getElementById('boxBanner').style.display = 'none'
+    numeroDeMovimento.innerText = `${contadoDeMovimentos}`
+}
