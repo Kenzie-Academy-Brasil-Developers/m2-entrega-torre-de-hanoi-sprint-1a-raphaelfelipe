@@ -42,7 +42,9 @@ criandoDiscos();
 
 //----MOVIMENTAÇÃO-------
 
-
+let contadoDeMovimentos = 0
+const numeroDeMovimento = document.getElementById('numeroDeMovimentos')
+numeroDeMovimento.innerText = `${contadoDeMovimentos}`
 
 // constantes para movimentar disco
 
@@ -59,27 +61,11 @@ listaTorres.forEach(function(evt) {
 //funções para movimenta disco
 
 
-function jogando(torreClicada) {
-    if (torreClicada.target.className == 'torres') {
-        if (discoSelecionado == null) {
-            discoSelecionado = torreClicada.target.lastChild;
-            discoSelecionado.className += " discoSelecionado"
-        } else if(torreClicada.target.childElementCount == 0 || torreClicada.target.lastChild.id <= discoSelecionado.id){
-            movimentandoDisco(torreClicada.target, discoSelecionado);
-            discoSelecionado.classList.remove("discoSelecionado")
-            discoSelecionado = null;
-        } else{
-            //chamar função perdeu
-        }
+function jogando(itemClicado) {
+    if (itemClicado.target.className == 'torres') {
+        clicandoNaTorre(itemClicado.target)
     } else {
-        if (discoSelecionado == null) {
-            discoSelecionado = torreClicada.target.parentElement.lastChild;
-            discoSelecionado.className += " discoSelecionado"
-        } else if(torreClicada.target.parentElement.lastChild.id <= discoSelecionado.id){
-            movimentandoDisco(torreClicada.target.parentElement, discoSelecionado);
-            discoSelecionado.classList.remove("discoSelecionado")
-            discoSelecionado = null;
-        }
+        clicandoNoDisco(itemClicado.target)
     }
 }
 
@@ -87,6 +73,31 @@ function movimentandoDisco(torreDestino, discoMovimentado) {
     torreDestino.appendChild(discoMovimentado);
 }
 
-function regras(){
-    
+function clicandoNaTorre(torreClicada) {
+    if (discoSelecionado == null) {
+        discoSelecionado = torreClicada.lastChild;
+        discoSelecionado.className += " discoSelecionado"
+    } else if (torreClicada.childElementCount == 0 || torreClicada.lastChild.id <= discoSelecionado.id) {
+        movimentandoDisco(torreClicada, discoSelecionado);
+        discoSelecionado.classList.remove("discoSelecionado")
+        discoSelecionado = null;
+        movimentos()
+    }
+}
+
+function clicandoNoDisco(discoClicado) {
+    if (discoSelecionado == null) {
+        discoSelecionado = discoClicado.parentElement.lastChild;
+        discoSelecionado.className += " discoSelecionado"
+    } else if (discoClicado.parentElement.lastChild.id <= discoSelecionado.id) {
+        movimentandoDisco(discoClicado.parentElement, discoSelecionado);
+        discoSelecionado.classList.remove("discoSelecionado")
+        discoSelecionado = null;
+        movimentos()
+    }
+}
+
+function movimentos() {
+    contadoDeMovimentos++
+    numeroDeMovimento.innerText = `${contadoDeMovimentos}`
 }
